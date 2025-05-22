@@ -14,4 +14,9 @@ class Personnel extends Model
         'satker_nama',
         'jabatan_nama',
     ];
+
+    public function ukurSeragam()
+    {
+        return $this->hasMany(UkurSeragam::class, 'personel_id');
+    }
 }
