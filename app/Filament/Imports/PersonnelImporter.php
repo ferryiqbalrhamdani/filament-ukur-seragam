@@ -17,6 +17,8 @@ class PersonnelImporter extends Importer
             ImportColumn::make('personel_nrp'),
             ImportColumn::make('personel_nama'),
             ImportColumn::make('personel_kelamin'),
+            ImportColumn::make('tb'),
+            ImportColumn::make('bb'),
             ImportColumn::make('pangkat_nama'),
             ImportColumn::make('satker_nama'),
             ImportColumn::make('jabatan_nama'),

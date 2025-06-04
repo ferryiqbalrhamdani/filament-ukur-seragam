@@ -49,6 +49,12 @@ class PersonnelResource extends Resource
                     ])
                     ->inline()
                     ->inlineLabel(false),
+                Forms\Components\TextInput::make('tb')
+                    ->numric()
+                    ->label('Tinggi Badan'),
+                Forms\Components\TextInput::make('bb')
+                    ->numric()
+                    ->label('Berat Badan'),
                 Forms\Components\TextInput::make('pangkat_nama')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('satker_nama')
@@ -85,6 +91,16 @@ class PersonnelResource extends Resource
                 Tables\Columns\TextColumn::make('personel_nama')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('personel_kelamin')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('tb')
+                    ->label('Tinggi Badan')
+                    ->default('-')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('bb')
+                    ->label('Berat Badan')
+                    ->default('-')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('pangkat_nama')

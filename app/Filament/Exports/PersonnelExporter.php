@@ -19,6 +19,8 @@ class PersonnelExporter extends Exporter
             ExportColumn::make('personel_nrp'),
             ExportColumn::make('personel_nama'),
             ExportColumn::make('personel_kelamin'),
+            ExportColumn::make('tb'),
+            ExportColumn::make('bb'),
             ExportColumn::make('pangkat_nama'),
             ExportColumn::make('satker_nama'),
             ExportColumn::make('jabatan_nama'),

@@ -13,6 +13,8 @@ class Personnel extends Model
         'pangkat_nama',
         'satker_nama',
         'jabatan_nama',
+        'tb',
+        'bb',
     ];
 
     public function ukurSeragam()

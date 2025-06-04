@@ -67,12 +67,16 @@ class UkurSeragamResource extends Resource
                                         $set('pangkat_nama', $personel->pangkat_nama);
                                         $set('satker_nama', $personel->satker_nama);
                                         $set('jabatan_nama', $personel->jabatan_nama);
+                                        $set('tb', $personel->tb);
+                                        $set('bb', $personel->bb);
                                     } else {
                                         $set('personel_nama', null);
                                         $set('personel_kelamin', null);
                                         $set('pangkat_nama', null);
                                         $set('satker_nama', null);
                                         $set('jabatan_nama', null);
+                                        $set('tb', null);
+                                        $set('bb', null);
                                     }
 
                                     // Reset field-field ukuran saat personel diganti
@@ -106,6 +110,12 @@ class UkurSeragamResource extends Resource
                                             'P' => 'P',
                                             'PJ' => 'PJ',
                                         ]),
+                                    Forms\Components\TextInput::make('tb')
+                                        ->label('Tinggi Badan')
+                                        ->maxLength(255),
+                                    Forms\Components\TextInput::make('bb')
+                                        ->label('Berat Badan')
+                                        ->maxLength(255),
                                     Forms\Components\TextInput::make('pangkat_nama')
                                         ->required()
                                         ->maxLength(255),
@@ -133,6 +143,18 @@ class UkurSeragamResource extends Resource
                                         ),
                                     Forms\Components\TextInput::make('pangkat_nama')
                                         ->label('Pangkat')
+                                        ->disabled(
+                                            fn(Get $get) => $get('personel_id') === NULL
+                                        ),
+                                    Forms\Components\TextInput::make('tb')
+                                        ->label('Tinggi Badan')
+                                        ->numeric()
+                                        ->disabled(
+                                            fn(Get $get) => $get('personel_id') === NULL
+                                        ),
+                                    Forms\Components\TextInput::make('bb')
+                                        ->label('Berat Badan')
+                                        ->numeric()
                                         ->disabled(
                                             fn(Get $get) => $get('personel_id') === NULL
                                         ),
@@ -1844,6 +1866,14 @@ class UkurSeragamResource extends Resource
                 Tables\Columns\TextColumn::make('personnel.personel_kelamin')
                     ->label('JK')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('personnel.tb')
+                    ->label('Tinggi Badan')
+                    ->default('-')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('personnel.bb')
+                    ->label('Berat Badan')
+                    ->default('-')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('jenis_ukuran')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('size_pdu')
@@ -1950,7 +1980,7 @@ class UkurSeragamResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                // Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -26,6 +26,8 @@ class CreateUkurSeragam extends CreateRecord
             'pangkat_nama' => $this->data['pangkat_nama'],
             'satker_nama' => $this->data['satker_nama'],
             'jabatan_nama' => $this->data['jabatan_nama'],
+            'tb' => $this->data['tb'],
+            'bb' => $this->data['bb'],
         ]);
     }
 }

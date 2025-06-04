@@ -35,6 +35,8 @@ class UkurSeragamExporter extends Exporter
             ExportColumn::make('personnel.personel_nrp')->label('NRP'),
             ExportColumn::make('personnel.personel_nama')->label('Nama Personel'),
             ExportColumn::make('personnel.personel_kelamin')->label('JK'),
+            ExportColumn::make('personnel.tb')->label('Tinggi Badan'),
+            ExportColumn::make('personnel.bb')->label('Berat Badan'),
             ExportColumn::make('personnel.pangkat_nama')->label('Pangkat'),
             ExportColumn::make('personnel.satker_nama')->label('Satker'),
             ExportColumn::make('personnel.jabatan_nama')->label('Jabatan'),

@@ -32,6 +32,8 @@ class ViewUkurSeragam extends ViewRecord
             $data['pangkat_nama'] = $personel->pangkat_nama;
             $data['satker_nama'] = $personel->satker_nama;
             $data['jabatan_nama'] = $personel->jabatan_nama;
+            $data['tb'] = $personel->tb;
+            $data['bb'] = $personel->bb;
         }
 
         return $data;
