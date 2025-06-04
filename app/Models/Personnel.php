@@ -19,4 +19,9 @@ class Personnel extends Model
     {
         return $this->hasMany(UkurSeragam::class, 'personel_id');
     }
+
+    public function latestUkurSeragam()
+    {
+        return $this->hasOne(UkurSeragam::class, 'personel_id');
+    }
 }

@@ -27,6 +27,12 @@ class PersonnelResource extends Resource
 
     protected static ?string $slug = 'personel';
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with('latestUkurSeragam');
+    }
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -37,8 +43,9 @@ class PersonnelResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Radio::make('personel_kelamin')
                     ->options([
-                        'L' => 'Laki-laki',
-                        'P' => 'Perempuan'
+                        'L' => 'L',
+                        'P' => 'P',
+                        'PJ' => 'PJ',
                     ])
                     ->inline()
                     ->inlineLabel(false),
@@ -73,6 +80,7 @@ class PersonnelResource extends Resource
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('personel_nrp')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('personel_nama')
                     ->searchable(),
@@ -86,6 +94,127 @@ class PersonnelResource extends Resource
                 Tables\Columns\TextColumn::make('jabatan_nama')
                     ->searchable()
                     ->limit(50),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.size_pdu')
+                    ->label('Size PDU')
+                    ->default('-')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_bahu_pdu')
+                    ->label('Lebar Bahu PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_belakang_pdu')
+                    ->label('Lebar Belakang PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_depan_pdu')
+                    ->label('Lebar Depan PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_dada_pdu')
+                    ->label('Lebar Dada PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_pinggang_pdu')
+                    ->label('Lebar Pinggang PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_bawah_pdu')
+                    ->label('Lebar Bawah PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.panjang_baju_pdu')
+                    ->label('Panjang Baju PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.panjang_tangan_pdu')
+                    ->label('Panjang Tangan PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lingkar_tangan_atas_pdu')
+                    ->label('Lingkar Tangan Atas PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lingkar_tangan_bawah_pdu')
+                    ->label('Lingkar Tangan Bawah PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+
+                Tables\Columns\TextColumn::make('latestUkurSeragam.size_kemeja')
+                    ->label('Size Kemeja')
+                    ->default('-'),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_bahu_kemeja')
+                    ->label('Lebar Bahu Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_belakang_kemeja')
+                    ->label('Lebar Belakang Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_depan_kemeja')
+                    ->label('Lebar Depan Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_dada_kemeja')
+                    ->label('Lebar Dada Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_pinggang_kemeja')
+                    ->label('Lebar Pinggang Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_bawah_kemeja')
+                    ->label('Lebar Bawah Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.panjang_baju_kemeja')
+                    ->label('Panjang Baju Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.panjang_tangan_kemeja')
+                    ->label('Panjang Tangan Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lingkar_tangan_atas_kemeja')
+                    ->label('Lingkar Tangan Atas Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lingkar_tangan_bawah_kemeja')
+                    ->label('Lingkar Tangan Bawah Kemeja')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+
+                Tables\Columns\TextColumn::make('latestUkurSeragam.size_celana_pdu')
+                    ->label('Size Celana PDU')
+                    ->default('-'),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_pinggang_celana_pdu')
+                    ->label('Lebar Pinggang Celana PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_pinggul_celana_pdu')
+                    ->label('Lebar Pinggul Celana PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_paha_celana_pdu')
+                    ->label('Lebar Paha Celana PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_lutut_celana_pdu')
+                    ->label('Lebar Lutut Celana PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.lebar_bawah_celana_pdu')
+                    ->label('Lebar Bawah Celana PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.kress_celana_pdu')
+                    ->label('Kress Celana PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+                Tables\Columns\TextColumn::make('latestUkurSeragam.panjang_celana_celana_pdu')
+                    ->label('Panjang Celana PDU')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->default(0),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
