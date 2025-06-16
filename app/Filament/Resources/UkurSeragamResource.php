@@ -1499,7 +1499,7 @@ class UkurSeragamResource extends Resource
                                         // Selain itu, editable
                                         return false;
                                     })
-                                    ->label('Lingkar Tangan Atas')
+                                    ->label('Lebar Pinggang')
                                     ->columnSpan(4),
 
                                 Forms\Components\TextInput::make('toleransi_lebar_pinggang_celana_pdu')
@@ -1551,7 +1551,7 @@ class UkurSeragamResource extends Resource
                                         // Selain itu, editable
                                         return false;
                                     })
-                                    ->label('Lingkar Tangan Atas')
+                                    ->label('Lebar Pinggul')
                                     ->columnSpan(4),
 
                                 Forms\Components\TextInput::make('toleransi_lebar_pinggul_celana_pdu')
@@ -1603,7 +1603,7 @@ class UkurSeragamResource extends Resource
                                         // Selain itu, editable
                                         return false;
                                     })
-                                    ->label('Lingkar Tangan Atas')
+                                    ->label('Lebar Paha')
                                     ->columnSpan(4),
 
                                 Forms\Components\TextInput::make('toleransi_lebar_paha_celana_pdu')
@@ -1655,7 +1655,7 @@ class UkurSeragamResource extends Resource
                                         // Selain itu, editable
                                         return false;
                                     })
-                                    ->label('Lingkar Tangan Atas')
+                                    ->label('Lebar Lutut')
                                     ->columnSpan(4),
 
                                 Forms\Components\TextInput::make('toleransi_lebar_lutut_celana_pdu')
@@ -1707,7 +1707,7 @@ class UkurSeragamResource extends Resource
                                         // Selain itu, editable
                                         return false;
                                     })
-                                    ->label('Lingkar Tangan Atas')
+                                    ->label('Lebar Bawah')
                                     ->columnSpan(4),
 
                                 Forms\Components\TextInput::make('toleransi_lebar_bawah_celana_pdu')
@@ -1759,7 +1759,7 @@ class UkurSeragamResource extends Resource
                                         // Selain itu, editable
                                         return false;
                                     })
-                                    ->label('Lingkar Tangan Atas')
+                                    ->label('Kress Celana')
                                     ->columnSpan(4),
 
                                 Forms\Components\TextInput::make('toleransi_kress_celana_pdu')
@@ -1811,7 +1811,7 @@ class UkurSeragamResource extends Resource
                                         // Selain itu, editable
                                         return false;
                                     })
-                                    ->label('Lingkar Tangan Atas')
+                                    ->label('Panjang Celana')
                                     ->columnSpan(4),
 
                                 Forms\Components\TextInput::make('toleransi_panjang_celana_celana_pdu')
